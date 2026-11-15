@@ -34,6 +34,7 @@ void          db_destroy(MusicDB *db){
         Song *song=(*db).songs[i];
         free((*song).title);
         free(song);
+        i++;
     }
     while (i<(*db).n_artists){
         Artist *artist=(*db).artists[i];
@@ -44,7 +45,7 @@ void          db_destroy(MusicDB *db){
     free((*db).songs);
     free((*db).artists);
     free((db));
-
+    i++;
 }
 
 size_t        db_song_count(const MusicDB *db){
@@ -83,7 +84,7 @@ int           db_push(MusicDB *db, const char *title, const char *artist,double 
     while (title[len] !=0){
         len++;
     }
-     char *cp =malloc(len);
+     char *cp =malloc(len+1);
      if(cp==NULL){
         return -1;
     }
@@ -100,11 +101,11 @@ int           db_push(MusicDB *db, const char *title, const char *artist,double 
         }
         k++;
     }
-    int artistNew = (fArtists==NULL)
+    int artistNew = (fArtists==NULL);
     if (artistNew){
-        fArtists= malloc(sizeof(Artist));
+        fArtists= malloc(sizeof(Artist)+1);
         free(cp);
-        return -1
+        return -1;
     }
     size_t namelen = 0;
     while( artist[namelen]){
@@ -125,10 +126,10 @@ int           db_push(MusicDB *db, const char *title, const char *artist,double 
     (*fArtists).n_songs=0;
     (*fArtists).cap=0;
     Song *song = malloc(sizeof(Song));
-    if(snong ==NULL){
+    if(song ==NULL){
         if(artistNew){
             free((*fArtists).name);
-            free(*fArtists);
+            free(fArtists);
     }
 
     free(cp);
@@ -141,5 +142,26 @@ int           db_push(MusicDB *db, const char *title, const char *artist,double 
 (*song).num_rated=num_rated;
 (*song).id=(*db).n_songs;
 //db_Push is partially finished and needs more work 
+return 0;
 }
-
+void          db_disp(const MusicDB *db, FILE *out, size_t lim){ 
+return 0;
+}
+//display unfinish and needs work
+int           db_load(MusicDB *db, const char *dir){
+    return 0;
+}
+//load unfinished and needs work
+size_t        db_search(const MusicDB *db, song_pred pred, const void *key,const Song ***out){
+    return 0;
+}
+    void          db_sort(MusicDB *db, int card){
+return 0;
+}
+size_t        db_count_decade(const MusicDB *db, int start, const Song **best){
+    return 0;
+}
+const Artist *db_top_artist(const MusicDB *db){
+    return 0;
+}
+//all unfinfished functions didnt have enough time
