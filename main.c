@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 int main(){
-    musicdb *db = db_create;
+    MusicDB *db = db_create;
     if (db==NULL){
         printf( "db creation failed\n" );
         return 1;
@@ -20,3 +20,4 @@ int main(){
     }
     return 0;
 }
+//unfinished need work
